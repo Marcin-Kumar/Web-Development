@@ -1,0 +1,92 @@
+//@import "reset";
+
+// Define Variables and values
+$bgColour: rgba(255, 251, 251, 0.349);
+$textColour: rgb(0, 0, 0);
+$fontType: Helvetica, sans-serif;
+$fontSize: 18px;
+
+// base mixin for website
+@mixin base-format {
+  background: $bgColour;
+  font-family: $fontType;
+  font-size: $fontSize;
+  color: $textColour;
+  border: 1px solid black;
+}
+
+// base mixin for buttons
+@mixin base-button {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  margin: 3px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@mixin base-grid($templateTimesSize, $boxHeight, $columnGap, $rowGap) {
+  display: grid;
+  grid-template-columns: repeat($templateTimesSize);
+  grid-auto-rows: minmax($boxHeight);
+  column-gap: $columnGap;
+  row-gap: $rowGap;
+}
+
+// Use the variables
+body {
+  @include base-format;
+  margin: 0;
+  border: none;
+}
+
+.main {
+  padding: 1rem;
+  margin-top: 1rem;
+  height: 90vh;
+  width: 90vw;
+}
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    display: block;
+    padding: 6px;
+    text-decoration: none;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.grid-wrapper {
+  @include base-grid((2, 1fr), 10rem, 2rem, 2rem);
+  div {
+    background: rgb(152, 170, 168);
+    padding: 3rem;
+  }
+}
+
+.button-basic {
+  @include base-button;
+}
+
+.button-home {
+  @extend .button-basic;
+  overflow: hidden;
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
