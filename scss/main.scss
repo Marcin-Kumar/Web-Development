@@ -31,7 +31,7 @@ $fontSize: 18px;
 @mixin base-grid($templateTimesSize, $boxHeight, $columnGap, $rowGap) {
   display: grid;
   grid-template-columns: repeat($templateTimesSize);
-  grid-auto-rows: minmax($boxHeight);
+  grid-auto-rows: minmax($boxHeight, auto);
   column-gap: $columnGap;
   row-gap: $rowGap;
 }
@@ -46,8 +46,6 @@ body {
 .main {
   padding: 1rem;
   margin-top: 1rem;
-  height: 90vh;
-  width: 90vw;
 }
 
 nav {
@@ -71,10 +69,20 @@ nav {
 }
 
 .grid-wrapper {
-  @include base-grid((2, 1fr), 10rem, 2rem, 2rem);
-  div {
-    background: rgb(152, 170, 168);
-    padding: 3rem;
+  @include base-grid((2, 21.3rem), 15rem, 2rem, 2rem);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  // border: 10px solid red;
+  justify-content: center;
+  align-content: center;
+  .subgrid {
+    background: rgb(0, 0, 0);
+    padding: 2rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    cursor: pointer;
   }
 }
 
